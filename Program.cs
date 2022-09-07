@@ -24,13 +24,13 @@ namespace NumberGuesser
                 int differenceOfRange = highest - lowest;
                 int midpoint = differenceOfRange / 2;
                 int midValue = lowest + midpoint;
-                bool secretNumber = true;
+                bool magicalNumber = true;
 
                 Console.WriteLine(
                     "Think of a number between 1 to 1024. Please, do not say it out loud... It'll make it easier. Press enter to continue"
                 );
                 Console.ReadKey();
-                while (lowest <= highest && secretNumber)
+                while (lowest <= highest && magicalNumber)
                 //while low # is less or equal to the highest # and the secretNumber is true
                 {
                     differenceOfRange = highest - lowest;
@@ -53,7 +53,7 @@ namespace NumberGuesser
                     if (userChoice == 3)
                     {
                         Console.WriteLine("My magical powers worked again");
-                        secretNumber = false; //the number is not longer secret therefore is false
+                        magicalNumber = false; //the number is not longer secret therefore is false
                     }
 
                     if (lowest < highest && userChoice == 2)
