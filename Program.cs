@@ -1,73 +1,79 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NumberGuesser
 {
     class Program
     {
-        static void DisplayGreeting()
-        {
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine(
-                "    Welcome to the amazing Number Guesser! Don't be spooked once it's Guessed right.!  "
-            );
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine();
-            Console.WriteLine();
-        }
-
         static void Main(string[] args)
         {
             {
-                DisplayGreeting();
-                int lowest = 1;
-                int highest = 1024;
-                int differenceOfRange = highest - lowest;
-                int midpoint = differenceOfRange / 2;
-                int midValue = lowest + midpoint;
+                SayHi();
+                //Create a variable for the equation of code
+                var lowestNum = 1;
+                var highestNum = 1024;
+                var differenceOfRange = highestNum - lowestNum;
+                var midpointNum = differenceOfRange / 2;
+                var midValueNumber = lowestNum + highestNum;
+                //Bool if the magical number is = to true
                 bool magicalNumber = true;
 
+                //Now asking the user to guess their number
                 Console.WriteLine(
-                    "Think of a number between 1 to 1024. Please, do not say it out loud... It'll make it easier. Press enter to continue"
+                    "Pick a number between 1 and 1024 Please, do not say it out loud. \n Press enter or return to continue."
                 );
+                //Console Read Key is used so the user has to press a key on the keyboard to continue
                 Console.ReadKey();
-                while (lowest <= highest && magicalNumber)
-                //while low # is less or equal to the highest # and the secretNumber is true
+
+                //While the lowest number is less than/equal to the Highest number and the magical number is still true
+                while (lowestNum <= highestNum && magicalNumber)
                 {
-                    differenceOfRange = highest - lowest;
-                    midpoint = differenceOfRange / 2;
-                    midValue = lowest + midpoint;
-                    //The middle of 1 - 1025 is 512
+                    //Telling the code to run the math equation to guess the number of the user
+                    differenceOfRange = highestNum - lowestNum;
+                    midpointNum = differenceOfRange / 2;
+                    midValueNumber = lowestNum + midpointNum;
                     Console.WriteLine(
-                        "Something is telling me that this is your number: {0}",
-                        midValue
+                        "Something is telling me that this is your number or close to it: {0}",
+                        midValueNumber
                     );
-                    //User telling the computer if the # is too low or too high or right
+                    //Asking the user for input
+                    // using \n can space out sentences in Console WriteLine
+                    // \n is useful for multi question answer
                     Console.WriteLine(
-                        " 1: Wrong, number is lower\n 2: Wrong, number is higher \n 3: Wohoo, let's party that is right "
+                        $" 1: Wrong, number is lower \n 2:Wrong, number is higher \n 3: Wahoo, you are a Magician!!"
                     );
-                    //prompt returns a string so we have to use int.Parse to convert the string to an integer
-                    int userChoiceToInt = int.Parse(Console.ReadLine());
-                    //we create a variable userChoice to store the integer
-                    int userChoice = userChoiceToInt;
-                    //we check what option the user selected
+                    // converting the number into readable code for the computer.
+                    // making a double into a string essentially
+                    double userChoiceConvert = Convert.ToDouble(Console.ReadLine());
+                    double userChoice = userChoiceConvert;
+                    // coding the 3 possible user inputs
+                    // if user chooses either 2 or 3 the code will run a math equation
                     if (userChoice == 3)
                     {
-                        Console.WriteLine("My magical powers worked again");
-                        magicalNumber = false; //the number is not longer secret therefore is false
+                        Console.WriteLine("Am I a magician or what! You are welcome.");
                     }
-
-                    if (lowest < highest && userChoice == 2)
+                    if (lowestNum < highestNum && userChoice == 2)
                     {
-                        lowest = midValue + 1;
-                        Console.WriteLine("Your number was {0}", midValue);
+                        lowestNum = midValueNumber + 1;
+                        Console.WriteLine("Your number was {0}", midValueNumber);
                     }
-                    else if (lowest < highest && userChoice == 1)
+                    else if (lowestNum < highestNum && userChoice == 1)
                     {
-                        highest = midValue - 1;
-                        Console.WriteLine("Your number was {0}", midValue);
+                        highestNum = midValueNumber - 1;
+                        Console.WriteLine("Your number was {0}", midValueNumber);
                     }
                 }
             }
+        }
+
+        //Method to say Hi. I can put it in the main code easily
+        static void SayHi()
+        {
+            Console.WriteLine("-----------------------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("Welcome to the amazing number guesser!");
+            Console.WriteLine("Don't be spooked once the number is guessed right!");
+            Console.WriteLine("---------------------------------------------------------");
         }
     }
 }
